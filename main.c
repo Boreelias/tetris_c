@@ -16,14 +16,19 @@ Entrega: Sí/No
 //EL BUCLE DEL JUEGO
 
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 #include "../GBT/gbt.h"
+#include "../GBT/gbt_graficos.h"
 #include "juego.h"
 #include "graficos.h"
+
 #define ANCHO_VENTANA 128
 #define ALTO_VENTANA 128
 #define CANT_COLORES 16
 
-tGBT_ColorRGB paletaCGA[CANT_COLORES] = {
+tGBT_ColorRGB paletaCGA[CANT_COLORES] =
+{
 
     /// 0-15: Colores CGA (16 colores)
     {0x00, 0x00, 0x00}, // 0:   Negro
@@ -44,38 +49,47 @@ tGBT_ColorRGB paletaCGA[CANT_COLORES] = {
     {0xFF, 0xFF, 0xFF}  // 15:  Usado como transparente por GBT
 };
 
-int main() {
-    //Inicializacion de la biblioteca grafica GBT
-    gbt_iniciar();
-    //Creacion de la ventana (Nombre Ventana, Ancho, Alto, Escala)
-    gbt_crear_ventana("Tetris C", ANCHO_VENTANA, ALTO_VENTANA, 7);
+int main()
+{
+    srand(time(NULL));//Se utiliza para el randomizador de pieza
 
-    //Aplicacion de la paleta de colores por defecto (CGA/VGA)
-    //Se usa NULL para que la libreria cargue sus colores base
-    gbt_aplicar_paleta(paletaCGA, CANT_COLORES, 0);
+    //Crea la bolsa de piezas y la llena
+    ControlBolsa miBolsa;
+    inicializar_Control_Bolsa(&miBolsa);
 
     //Declaracion e inicializacion del tablero logico
     Tablero miTablero;
-    inicializarTablero(miTablero);
+    inicializar_Tablero(miTablero);
 
-    /*COPIA DE TEMPORIZADOR
+    //Inicializacion de la biblioteca grafica GBT
+    gbt_iniciar();
+    //Creacion de la ventana (Nombre Ventana, Ancho, Alto, Escala)
+    gbt_crear_ventana("Tetris C",ANCHO_VENTANA,ALTO_VENTANA, 7);
+    //Aplicacion de la paleta de colores por defecto (CGA/VGA)
+    //0 para que la libreria cargue sus colores base
+    gbt_aplicar_paleta(paletaCGA,CANT_COLORES,0);
 
-    tGBT_Temporizador *temporizador = gbt_temporizador_crear(1.0);
-    if (!temporizador) {
-        fprintf(stderr, "Error al crear el temporizador para los dibujos: %s\n", gbt_obtener_log());
-        return -1;
-    }*/
+    int corriendo=1;
 
-    // QUEDA RANDOMIZADOR DE PIEZA, CONTROLAR EL SACAR TODAS LAS PIEZAS 1,2,3,4,5,6,7,8 Y VOLVER A EMPEZAR
-
-    int corriendo = 1;
-    while (corriendo) {
+    while (corriendo)
+    {
         gbt_procesar_entrada();
-        if (gbt_tecla_presionada(GBTK_ESCAPE)) corriendo = 0;
+        if (gbt_tecla_presionada(GBTK_ESCAPE))corriendo=0;
 
+        //Temporizador
+        //Si la pieza toca el fondo o colisiona
+        //1 Fijamos al tablero
+        //2 Volver a pedir Pieza
+        //3 iniciar caida y posiciones de pieza en funcion
+
+
+        //RENDERIZADO
         gbt_borrar_backbuffer(0); // Limpiar pantalla (negro)
 
+        //DIBUJAMOS EL TABLERO ESTATICO
         dibujarTablero(miTablero); // Dibujar el estado actual
+
+        //DIBUJAMOS LA PIEZA CAYENDO
 
         gbt_volcar_backbuffer(); //Envia a pantalla lo dibujado
         gbt_esperar(16); // Aproximadamente 60 FPS

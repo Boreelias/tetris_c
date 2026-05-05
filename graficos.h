@@ -4,6 +4,7 @@
 #define GRAFICOS_H_INCLUDED
 
 #include "juego.h"
+#include "../GBT/gbt.h"
 
 //tamaño segun resolucion 128x128
 #define TAM_BLOQUE 5  // Tamaño de cada celda en pixeles es 4x4 el bloque, sobra 1 para la sombra y que no sea una mancha de color
@@ -12,5 +13,7 @@
 
 //Prototipo renderiza el tablero en pantalla
 void dibujarTablero(Tablero tablero);
+
+void dibujar_Pieza_Caida(Tablero tablero, Pieza piezas);
 
 #endif // GRAFICOS_H_INCLUDED
