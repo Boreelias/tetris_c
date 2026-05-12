@@ -1,0 +1,53 @@
+# depslib dependency file v1.0
+1778628204 source:c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\graficos.c
+	"graficos.h"
+
+1778628204 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\graficos.h
+	"juego.h"
+	"../GBT/gbt.h"
+
+1778628204 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\juego.h
+	"piezas.h"
+
+1778628204 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\piezas.h
+	"../GBT/gbt_temporizador.h"
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt_temporizador.h
+	<stdint.h>
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt.h
+	"gbt_entrada.h"
+	"gbt_graficos.h"
+	"gbt_logger.h"
+	"gbt_temporizador.h"
+	"gbt_vector.h"
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt_entrada.h
+	<stdint.h>
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt_graficos.h
+	<stdint.h>
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt_logger.h
+
+1777587237 c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\gbt\gbt_vector.h
+	<stdlib.h>
+	<stdint.h>
+
+1778628204 source:c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\juego.c
+	"juego.h"
+
+1778628204 source:c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\main.c
+	<stdio.h>
+	<time.h>
+	<stdlib.h>
+	"../GBT/gbt.h"
+	"../GBT/gbt_graficos.h"
+	"juego.h"
+	"graficos.h"
+
+1778628204 source:c:\users\bore elias\onedrive\escritorio\yo\topicos\proyectos\git\tetris_c\piezas.c
+	<time.h>
+	<stdlib.h>
+	"juego.h"
+
